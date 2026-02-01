@@ -1,0 +1,18 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Student Rental logo">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#34b5f5" />
+      <stop offset="100%" stop-color="#1f9fdc" />
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="64" fill="#f4f6f8" />
+  <g transform="translate(56 40)">
+    <path d="M200 34c6.5-4.5 15.5-4.5 22 0l164 114c11.1 7.7 5.7 25-8 25h-34v170c0 11-9 20-20 20H98c-11 0-20-9-20-20V173H44c-13.7 0-19.1-17.3-8-25z" fill="url(#g)" />
+    <rect x="194" y="134" width="40" height="44" rx="4" fill="#fff" opacity="0.98" />
+    <rect x="194" y="188" width="40" height="44" rx="4" fill="#fff" opacity="0.98" />
+    <rect x="154" y="134" width="40" height="44" rx="4" fill="#fff" opacity="0.98" />
+    <rect x="234" y="134" width="40" height="44" rx="4" fill="#fff" opacity="0.98" />
+  </g>
+  <text x="256" y="388" text-anchor="middle" fill="#0f172a" font-family="'Inter', 'Segoe UI', sans-serif" font-size="62" font-weight="700" letter-spacing="1">STUDENT</text>
+  <text x="256" y="452" text-anchor="middle" fill="#0f172a" font-family="'Inter', 'Segoe UI', sans-serif" font-size="62" font-weight="700" letter-spacing="1">RENTAL</text>
+</svg>
