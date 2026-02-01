@@ -1,119 +1,63 @@
 # 🏠 Sàn Giao Dịch Thuê Trọ Cho Sinh Viên
 
-## 📋 Mô tả dự án
-Nền tảng mobile + backend API giúp sinh viên tìm kiếm phòng trọ nhanh chóng, minh bạch. Chủ trọ có thể đăng tin, quản lý phòng trọ dễ dàng. Hệ thống hỗ trợ giao tiếp realtime (chat), định vị bản đồ, thanh toán đặt cọc, hợp đồng điện tử.
+Nền tảng gồm backend API, web quản trị và ứng dụng mobile hỗ trợ sinh viên tìm phòng trọ, chủ trọ đăng tin, quản trị viên giám sát. Các tính năng chính: tìm kiếm phòng, chat realtime, bản đồ, đặt cọc/thanh toán, hợp đồng PDF, thông báo đẩy.
 
-## 👥 3 Actor chính
-1. **Sinh viên (Student)** - Tìm kiếm và thuê phòng
-2. **Chủ trọ (Owner)** - Đăng tin và quản lý phòng
-3. **Quản trị viên (Admin)** - Giám sát và quản lý hệ thống
+## 👥 Actor
+1. Sinh viên (Student)
+2. Chủ trọ (Owner)
+3. Quản trị viên (Admin)
 
-## 🛠 Công nghệ sử dụng
+## 🛠 Công nghệ
+- Backend: Node.js, Express, MongoDB (Mongoose), JWT, Socket.io, Firebase Cloud Messaging, PDFKit, Cloudinary/Firebase Storage, thanh toán Momo + ZaloPay, Google Maps/OSM → GeoJSON.
+- Web admin: React 18, Vite, React Router, Axios.
+- Mobile: React Native (Expo), React Navigation.
 
-### Frontend (Mobile)
-- **Mobile App**: React Native + Expo + React Navigation
-
-### Backend
-- **API Server**: NodeJS + Express
-- **Database**: MongoDB + Mongoose
-- **Authentication**: JWT + bcrypt
-- **Realtime**: Socket.io + Firebase Cloud Messaging
-- **File Storage**: Firebase Storage
-- **Payment**: Momo & ZaloPay Integration
-- **PDF Generation**: PDFKit
-- **Maps**: Google Maps API
-
-## 📁 Cấu trúc dự án
-
+## 📁 Cấu trúc
 ```
 student-rental-platform/
-├── backend/           # NodeJS Backend API
-├── mobile/           # React Native Mobile App
-└── README.md         # Documentation
+├── backend/       # API server
+├── admin-web/     # Web quản trị (Vite React)
+├── mobile/        # Ứng dụng mobile (Expo)
+└── README.md
 ```
 
-Lưu ý: Web frontend đã được gỡ khỏi repository, chỉ còn backend và mobile.
-
-## 🚀 Cài đặt và chạy dự án
-
-### ⚡ Quick Start
-
-**Bước 1: Clone repository**
+## 🚀 Cài đặt nhanh
+Clone repo:
 ```bash
-git clone <repository-url>
+git clone https://github.com/dev03hth21/student_rental.git
 cd student-rental-platform
 ```
 
-**Bước 2: Setup MongoDB**
-
-📖 Xem hướng dẫn chi tiết: [backend/SETUP_GUIDE.md](backend/SETUP_GUIDE.md)
-
-- **MongoDB Atlas (Cloud - Khuyến nghị)**: Miễn phí, không cần cài đặt
-- **MongoDB Local**: Cài đặt trên máy
-
-**Bước 3: Chạy Backend**
+### Backend API
 ```bash
 cd backend
 npm install
-# Cập nhật MONGODB_URI trong file .env
-npm run dev
+cp .env.example .env   # nếu có, hoặc tự tạo theo mục Biến môi trường
+npm run dev             # hoặc npm start
 ```
+- Mặc định chạy tại http://localhost:5000
+- Hướng dẫn chi tiết: [backend/SETUP_GUIDE.md](backend/SETUP_GUIDE.md)
 
-Server chạy tại: `http://localhost:5000`
+### Web admin (Vite React)
+```bash
+cd admin-web
+npm install
+npm run dev -- --host --port 5174
+```
+- Truy cập: http://localhost:5174
 
-**Bước 4: Test API**
-- Import file `postman_collection.json` vào Postman
-- Hoặc dùng Thunder Client trong VS Code
-- Test endpoints: `/health`, `/api/auth/register`, `/api/auth/login`
-
-### Mobile App (Coming soon)
+### Mobile (Expo)
 ```bash
 cd mobile
 npm install
-npx expo start
+cp .env.example .env   # điền API_BASE_URL, MAPTILER_API_KEY
+npx expo start --tunnel
 ```
-
-## ✨ Tính năng chính
-
-### 🟦 Sinh viên
-- ✅ Đăng ký/Đăng nhập/Quên mật khẩu
-- ✅ Quản lý hồ sơ cá nhân
-- ✅ Tìm kiếm & lọc phòng nâng cao
-- ✅ Gợi ý phòng thông minh dựa trên hành vi
-- ✅ Xem chi tiết phòng (ảnh, video, bản đồ)
-- ✅ Lưu phòng yêu thích
-- ✅ Bình luận & đánh giá
-- ✅ Báo cáo vi phạm
-- ✅ Chat realtime với chủ trọ
-- ✅ Thanh toán đặt cọc (Momo/ZaloPay)
-- ✅ Nhận hợp đồng PDF
-- ✅ Yêu cầu hoàn tiền cọc
-
-### 🟧 Chủ trọ
-- ✅ Đăng ký/Đăng nhập chủ trọ
-- ✅ Quản lý hồ sơ
-- ✅ Đăng tin phòng trọ (ảnh, video, mô tả)
-- ✅ Chỉnh sửa/Ẩn/Xóa tin
-- ✅ Quản lý trạng thái phòng (available/pending/rented)
-- ✅ Xem yêu cầu thuê
-- ✅ Chat với sinh viên
-- ✅ Xử lý yêu cầu hoàn cọc
-- ✅ Báo cáo sinh viên vi phạm
-
-### 🟥 Admin
-- ✅ Đăng nhập admin
-- ✅ Duyệt tin đăng
-- ✅ Xử lý báo cáo vi phạm
-- ✅ Quản lý tài khoản (chủ trọ + sinh viên)
-- ✅ Quản lý hợp đồng
-- ✅ Xử lý tranh chấp hoàn cọc
-- ✅ Khóa/Mở khóa tài khoản
-- ✅ Dashboard thống kê
-- ✅ Gửi thông báo toàn hệ thống
+- Mở app Expo Go trên điện thoại hoặc chạy emulator.
 
 ## 🔐 Biến môi trường
 
-Tạo file `.env` trong thư mục backend:
+Backend (.env trong backend/):
 ```
 PORT=5000
 MONGODB_URI=mongodb://localhost:27017/student-rental
@@ -128,11 +72,22 @@ ZALOPAY_KEY1=your_zalopay_key1
 ZALOPAY_KEY2=your_zalopay_key2
 ```
 
-## 📱 Screenshots & Demo
-Coming soon...
+Mobile (.env trong mobile/):
+```
+API_BASE_URL=http://<your-ip>:5000/api
+MAPTILER_API_KEY=your_maptiler_api_key
+```
+
+## ⚙️ Scripts hữu ích (backend)
+- `npm run dev`: chạy server với nodemon.
+- `npm run seed:data`: nạp dữ liệu mẫu.
+- `npm run map:convert`: chuyển file OSM → GeoJSON (dùng `phuongthudaumot.osm`).
+- `npm test`: chạy Jest (hiện không bắt buộc có test).
+
+## ✨ Tính năng
+- Sinh viên: đăng ký/đăng nhập, tìm kiếm + lọc phòng, gợi ý, xem chi tiết, yêu thích, đánh giá/báo cáo, chat realtime, đặt cọc, nhận hợp đồng PDF, yêu cầu hoàn cọc.
+- Chủ trọ: quản lý hồ sơ, đăng/chỉnh sửa/xóa tin, trạng thái phòng, xem yêu cầu thuê, chat, xử lý hoàn cọc, báo cáo vi phạm.
+- Admin: duyệt tin, xử lý báo cáo, quản lý tài khoản và hợp đồng, thống kê dashboard, gửi thông báo hệ thống.
 
 ## 📄 License
 MIT License
-
-## 👨‍💻 Developers
-- Fullstack Developer Team
